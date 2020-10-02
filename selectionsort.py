@@ -1,4 +1,5 @@
-A = [2, 23, 19, 57, 12]
+n=int(input())
+A=list(map(int,input().strip().split()))[:n]
 for i in range(len(A)): 
     min_idx = i 
     for j in range(i+1, len(A)): 
