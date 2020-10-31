@@ -1,23 +1,24 @@
-# Program in Python to demonstrate Selection Sorting algorithm
-# Guide: https://www.geeksforgeeks.org/selection-sort/
+# Program in Python to demonstrate Bubble Sorting algorithm
+# Guide: https://www.geeksforgeeks.org/bubble-sort/
 #
 # author: shubhojeet
-# date: Oct 31, 2020: 2000 hrs
+# date: Oct 31, 2020: 2300 hrs
 import random
 
 
-def selection_sort(arr):
+def bubble_sort(arr):
     size_of_array = len(arr)
-    for i in range(0, size_of_array - 1):
-        pos = i
-
-        for j in range(i + 1, size_of_array):
-            if arr[pos] > arr[j]:
-                pos = j
-
-        temp = arr[i]
-        arr[i] = arr[pos]
-        arr[pos] = temp
+    i = 0
+    while i < size_of_array:
+        j = 0
+        while j < size_of_array - i - 1:
+            if arr[j] > arr[j + 1]:
+                temp = arr[j]
+                arr[j] = arr[j + 1]
+                arr[j + 1] = temp
+            j += 1
+        i += 1
+    return
 
 
 if __name__ == '__main__':
@@ -30,5 +31,5 @@ if __name__ == '__main__':
     print("\nArray before sorting: {0}".format(arr))
     print("\n------------------------\n")
 
-    selection_sort(arr)
+    bubble_sort(arr)
     print("After Sorting: {0}".format(arr))
