@@ -1,28 +1,31 @@
-# -*- coding: utf-8 -*-
-"""
-Insertion sort
-"""
+# Program in Python to demonstrate Insertion Sorting algorithm
+# Guide: https://www.geeksforgeeks.org/insertion-sort/
+#
+# author: spoorthi, shubhojeet
+# date: Oct 31, 2020: 2000 hrs
+import random
 
-import numpy as np
 
-arr = [5,0,4,1,3,3,2,1]
+def insertion_sort(arr):
+    size_of_array = len(arr)
+    for i in range(1, size_of_array):
+        num = arr[i]
+        j = i - 1
+        while j >= 0 and arr[j] > num:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = num
 
-x=np.array(arr)
-print("Input array:")
-print(x)
-m = x.shape[0]
 
-for i in range(m):
-    if(i == 0):
-        continue
-    num = x[i]
-    for j in range(i-1,-1,-1):
-        if(x[j] > num):
-            x[j+1] = x[j]
-        else:
-            x[j+1]=num
-            break
-    if(j == 0 and x[j]>num):
-        x[j]=num
-print("Sorted array:")  
-print(x)
+if __name__ == '__main__':
+    arr = []
+    size_of_array = int(input("Enter the number of elements: "))
+    # Randomly generating numbers within the list: [0, 10007}
+    for it in range(0, size_of_array):
+        arr.append(random.randint(0, 1000000000007) % 10007)
+
+    print("\nArray before sorting: {0}".format(arr))
+    print("\n------------------------\n")
+
+    insertion_sort(arr)
+    print("After Sorting: {0}".format(arr))
