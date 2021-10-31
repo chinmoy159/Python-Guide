@@ -1,14 +1,19 @@
 import os
+import pprint
 
 
-def list_of_files(ext, directory):
-    # this will search for the given extension in the given directory
-    directory_generator = os.walk(directory)
+def list_of_files(base_ext, base_directory):
+    directory_generator = os.walk(base_directory)
+    list_of_matching_files = []
     for parent, dirs, files in directory_generator:
-        print("{0} {1} {2}".format(parent, dirs, files))
+        for it in files:
+            if it.endswith(base_ext):
+                list_of_matching_files.append(os.path.join(parent, it))
+
+    pprint.pprint(list_of_matching_files)
 
 
 if __name__ == '__main__':
     extension = "py"  # input("Extension to match: ")
-    directory = os.path.join("c:\\intel")  # input("Directory to search in: ")
-    list_of_files(ext=extension, directory=directory)
+    directory = os.path.join("c:\\users", "USERNAME", "PROJECT_FILES")  # input("Directory to search in: ")
+    list_of_files(base_ext=extension, base_directory=directory)
